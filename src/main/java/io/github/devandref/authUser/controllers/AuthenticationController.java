@@ -1,5 +1,6 @@
 package io.github.devandref.authUser.controllers;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import io.github.devandref.authUser.dto.UserDto;
 import io.github.devandref.authUser.enums.UserStatus;
 import io.github.devandref.authUser.enums.UserType;
@@ -23,7 +24,8 @@ public class AuthenticationController {
     private UserService userService;
 
     @PostMapping("/signup")
-    public ResponseEntity<Object> registerUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<Object> registerUser(@RequestBody
+                                               @JsonView(UserDto.UserView.RegistrationPost.class) UserDto userDto) {
         if(userService.existsByUsername(userDto.getUsername())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Username already exists");
         }
