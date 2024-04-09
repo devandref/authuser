@@ -1,7 +1,8 @@
 package io.github.devandref.authUser.validation;
 
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
+
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 
 public class UsernameConstraintImpl implements ConstraintValidator<UsernameConstraint, String> {
 
